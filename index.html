@@ -1,6 +1,7 @@
 <html>
 <head>
 <style>
+html{font-family: Verdana}
 #outer{display:flex;height:100%;flex-direction:column;}
 #in1{
 	background-color:grey;
@@ -10,23 +11,27 @@
 	padding: 8px;
 }
 #in2{flex:1;display:flex;flex-direction:row}
-#in3{background-color:cyan;}
-#inner1{width:100px;background-color:red;}
-#inner2{flex:1;background-color:yellow;}
-#inner3{flex:1;background-color:green;}
+#in3{background-color:#111;color:#CCC;padding:8px;font-size:8pt}
+#inner1{width:800px;background-color:black; color:#333}
+#inner1{color:#888}
+#inner2{flex:1;background-color:#222;padding:24px}
+a{color:#DDD;text-decoration:none}
 </style>
 </head>
 <body>
 <div id="outer">
 <div id="in1">Latin Dance Player</div>
 <div id="in2">
- <div id="inner1"></div>
- <div id="inner2"></div>
- <div id="inner3">
- <iframe width="940" height="740" src="https://www.youtube.com/embed/yv-DcNTOMp4?start=22&autoplay=1"   allow="autoplay" frameborder="0" allowfullscreen></iframe>
+ <div id="inner1">
+<ul>
+<li><a href="https://www.youtube.com/embed/NUsoVlDFqZg?start=22&autoplay=1" target="myFrame">Enrique Iglesias - Bailando</a>
+</ul>
+ </div>
+ <div id="inner2">
+ <iframe width="940" height="740" name="myFrame" src="https://www.youtube.com/embed/yv-DcNTOMp4?start=22&autoplay=1"   allow="autoplay" frameborder="0" allowfullscreen></iframe>
  </div>
 </div>
-<div id="in3">test</div>
+<div id="in3">M&S Latin Dance Songs</div>
 </div>
 </body>
 </html>
