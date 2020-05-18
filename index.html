@@ -1,0 +1,206 @@
+<html>
+<style>
+html{	background-color: black;}
+#out1{	display: flex;
+	flex-direction: column;
+	height: 100%;}
+#top1{	background-color: #282828;
+	padding: 4px;
+	text-align: center;
+	color: #eee;
+	font-family: Segoe UI;
+	font-size: 14pt;
+	font-weight: 600;}
+#mid1{	display: flex;
+	flex-direction: row;
+	flex: 1;}
+#lft1{	flex:1;
+	display: flex;
+	flex-direction: column;}
+#ltp1{	display: flex;
+	flex: 1;
+	flex-direction: row;}
+#ltpl1{	background-color: black;}
+#ltpr1{	flex: 1;
+	background-color: black;
+	color: #ddd;}
+#img1{	display: inline-block;
+	float: left;
+	height: 40px;
+	width: 40px;
+	background-color: black;}
+#lbt1{	height: 640px;
+	overflow-y: scroll;
+	background-color: black;
+	border: 1px solid #444;}
+#rgt1{	flex: 1;
+	display: flex;
+	flex-direction: column;}
+#rtp1{	flex: 2;}
+#rbt1{	flex: 1;
+	border: none;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #444;}
+#bot1{	background-color: #282828;
+	color: #eee;
+	text-align: right;
+	padding: 8px;}
+label{	display: block;
+	padding: 8px;
+	font-family: Segoe UI;
+	font-size: 16pt;
+	font-weight: 600;}
+#tab1{	font-family: Arial;
+	font-size: 10pt;
+	width:100%;
+	background-color: black;
+	color: #ddd;
+	border-collapse: collapse;
+	user-select: none;
+	cursor: default;}
+tr:nth-child(odd){background-color: #222;}
+td{	padding: 4px 8px;}
+#player{width: 100%;
+	height: 100%;
+	background-color: black;
+	border: none;}
+#txa1{	display: inline-block;
+	padding: 8px;
+	width: 100%;
+	height: 100%;
+	background-color: #111;
+	color: #888;
+	border: none;
+	resize: none;}
+img{	border: 8px solid black;}
+textarea{cursor: auto;}
+button{	outline: none;
+	background-color: #448;
+	color: #eee;
+	border: none;
+	padding: 4 8;
+	margin: 0 8;}
+::-webkit-scrollbar { cursor: pointer;width: 16px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #080808; }
+::-webkit-scrollbar-track-piece { background-color: #111;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666;}
+</style>
+
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+<script>
+var prev = 0;
+var lcol = green;
+var player;
+var tb1;
+
+function initForm(){
+}
+
+function loadForm(mix){
+
+	tb1 = document.getElementById("tab1");
+	while(tb1.rows.length) {
+		tb1.deleteRow(0);
+	}
+	var tx1 = document.getElementById("txa1").value.split('\n');
+	if(mix==1){
+		var rand = Array(tx1.length);
+		var j = 0;
+		while(tx1.length){
+  			var i = Math.floor(Math.random() * tx1.length);
+			rand[j] = tx1[i];
+  			tx1.splice(i, 1);
+			j++;
+		}
+		tx1 = rand;
+	}
+
+	for(var i=0; i < tx1.length; i++){
+		var rw = tb1.insertRow(-1);
+		var dt = tx1[i].split(';');
+		for(j=0; j<dt.length; j++){
+			var td = rw.insertCell(-1);
+			td.innerText = dt[j];
+		}
+	}
+}
+
+function selRow(){
+	var rw1 = event.target.parentElement;
+	for(var i=0; i < tb1.rows.length; i++){
+		if(tb1.rows[i] == rw1){
+			highlight(i);
+			prev = i;
+			break;
+		} 
+	}
+}
+
+function highlight(rw1){
+	tb1.rows[prev].style.backgroundColor = lcol;
+	lcol = tb1.rows[rw1].style.backgroundColor;
+	tb1.rows[rw1].style.backgroundColor = "DarkSlateBlue";
+	var im1 = tb1.rows[rw1].cells[2].innerText; 
+	if(im1.length > 4){
+		document.getElementById("lb1").innerText = tb1.rows[rw1].cells[0].innerText;
+		document.getElementById("lb2").innerText = tb1.rows[rw1].cells[1].innerText;
+		document.getElementById("im1").src = "https://i.ytimg.com/vi/" + im1 + "/mqdefault.jpg";
+		var start = parseInt(tb1.rows[rw1].cells[3].innerText);
+		player.loadVideoByUrl("https://www.youtube.com/embed/" + im1, start);
+	}else
+		alert("Invalid data: " + im1);
+}
+
+function onYouTubeIframeAPIReady() {
+	player = new YT.Player( 'player', {
+		events: { 'onStateChange': onPlayerStateChange }
+	});
+}
+
+function onPlayerStateChange(event){
+	switch(event.data) {
+		case 0:
+			if(prev == tb1.rows.length - 1 ){
+				highlight(0);
+				prev = 0;
+			}else{
+				highlight(prev + 1);
+				prev++;
+			}
+			break;
+	}
+}
+
+</script>
+<body onLoad="initForm()" spellcheck="false">
+<div id="out1">
+	<div id="top1">Player 1.0
+	</div>
+	<div id="mid1">
+		<div id="lft1">
+			<div id="ltp1">
+				<div id="ltpl1">
+					<img id="im1"src="https://i.ytimg.com/vi/Oi1BcouEmio/mqdefault.jpg" />
+				</div>	
+				<div id="ltpr1">
+					<label id="lb1"></label>
+					<label id="lb2"></label>
+				</div>
+			</div>
+			<div id="lbt1">
+				<table id="tab1" onClick="selRow()"></table> 
+			</div>
+		</div>
+		<div id="rgt1">
+			<div id="rtp1">
+				<iframe width=100% height=100% id="player" src="https://www.youtube.com/embed/Oi1BcouEmio?enablejsapi=1" frameborder="0" allow="autoplay">
+				</iframe>
+			</div>
+			<div id="rbt1"><textarea id="txa1" placeholder="Paste playlist here ..."></textarea></div>
+		</div>
+	</div>
+	<div id="bot1"><button onClick="loadForm(1)">Random</button><button onClick="loadForm(0)">Load</button>
+	</div>
+</div>
+</body>
+</html>
