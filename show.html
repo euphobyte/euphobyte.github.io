@@ -21,6 +21,7 @@ async function show(){
   const response = await fetch(base);
   const resp = await response.text();
   document.open();
+  document.location = base;
   document.write(resp);
   document.close();
 }
