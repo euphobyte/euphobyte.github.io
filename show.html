@@ -1,0 +1,33 @@
+<html>
+<head>
+<script>
+async function show(){
+  const url1 = new URL(location.search.substring(1));
+  const subs = url1.pathname.split('/');
+  alert(subs);
+  const fname = subs[5].substring(0, 12);
+  var part2 = subs[4];
+  var part1 = subs[2];
+  const regexp = /^[a-z0-9]+$/i;
+
+  part1 = (part1.match(regexp) || []).join('');
+  part1 = part1.substring(0,32);
+
+  part2 = (part2.match(regexp) || []).join('');
+  part2 = part2.substring(0,40);
+
+  var base = "https://gist.githubusercontent.com/euphobyte/";
+  base = new URL(part1 + "/raw/" + part2 + '/' + fname , base);
+  
+  const response = await fetch(base);
+  const resp = await response.text();
+  document.open();
+  document.write(resp);
+  document.close();
+}
+</script>
+</head>
+<body onload="show()">
+Loading ..
+</body>
+</html>
