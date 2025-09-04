@@ -1,0 +1,14 @@
+<video id="vid1" controls width=640 height=480>
+</video>
+<hr>
+<label>File</label><input type="text" id="inp1"></input>
+<hr>
+<button onClick="test()">Play</button>
+<script>
+function test(){
+  var el = document.getElementById("vid1");
+  el.src= document.getElementById("inp1").value;
+  el.play();
+}
+</script>
+<!-- vid1" src="\\DISKSTATION\video\Music\Chiara Civello - Lo Che Non Vivo Senza Te.mp4 -->
