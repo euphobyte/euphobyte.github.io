@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+<svg xmlns="http://www.w3.org/2000/svg">
 <defs>
 <symbol id="ico1">
 <rect id="rct1" width="20" height="10" viewBox="0 0 20 10" stroke="red" stroke-width="2" fill="blue" />
@@ -8,6 +8,7 @@
 </symbol>
 </defs>
 </svg>
+
 
 
 
