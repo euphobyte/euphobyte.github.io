@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
 <defs>
 <symbol id="ico1">
-<rect id="rct1" width="20" height="10" stroke="red" stroke-width="2" fill="blue" />
+<rect x="0" y="0" id="rct1" width="20" height="10" stroke="red" stroke-width="2" fill="blue" />
 </symbol>
 <symbol id="ico2">
 <rect id="rct2" width="20" height="10" stroke="yellow" stroke-width="2" fill="green" />
 </symbol>
 </defs>
 <svg>
+
 
 
 
