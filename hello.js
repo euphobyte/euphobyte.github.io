@@ -8,8 +8,9 @@ async function getText(file) {
   let myObject = await fetch(file);
   let myText = await myObject.text();
   let myCoolCode = document.createElement("script");
-  myCoolCode.setAttribute("src", myText);
+  myCoolCode.text =  myText;
   //alert(myText);
   document.body.appendChild(myCoolCode);
 }
+
 
