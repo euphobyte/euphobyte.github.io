@@ -1,4 +1,1 @@
-
-function test(){
-  alert("Hello!");
-}
+const f321=()=>{ alert("Hello!");}
