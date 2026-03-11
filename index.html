@@ -1,7 +1,26 @@
 <html>
+<head>
+<style>
+#outer{
+  display: flex;
+}
+#left, #right{
+  flex: 1;
+}
+</style>  
+</head>
+<body>  
 <pre>
+<div id="outer">
+<div id="left">  
 Exploring Digital Technology
   
-- <a href="ncurses.txt">ncurses.txt</a>  
+- <a href="ncurses.txt" target="frame_a">ncurses.txt</a>
+</div>
+<div id="right">
+<iframe name="frame_a"></iframe>  
+</div>  
+</div>  
 </pre>
+</body>  
 </html>
