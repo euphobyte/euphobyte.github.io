@@ -20,5 +20,41 @@ Move cursor:
 move(12, (40-5));  // center the string 'Hello World!' on a  80, 25 screen.  format is: move(y, x);
 To combine move and print use mvprint(y, x, string).
 
+Form like behavior:
+
+#include <ncurses.h>
+int main(){
+  int sz=40;
+  char name[sz];
+  initscr();
+  addstr("First name: ");
+  refresh();
+  getnstr(name, sz-1);
+  printw("Hello! %s", name);
+  getch();
+  endwin();
+  return 0;
+}
+
+Border and colored text:
+
+#include <ncurses.h>
+int main(){
+  initscr();
+  border(0, 0, 0, 0, 0, 0, 0, 0);
+  move(1,1);
+  if(has_colors()){
+    start_color();
+    init_pair(1, COLOR_WHITE, COLOR_BLUE);
+    attrset(COLOR_PAIR(1));
+  }
+  mvprintw(12, 35, "Hello World!");
+  wrefresh(curscr);
+  getch();
+  endwin();
+  return 0;
+}
+
+
 
 
