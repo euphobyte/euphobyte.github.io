@@ -6,11 +6,16 @@ Using ncurses in Linux console c program
 Basis:
 
 #include <ncurses.h>
-main(){
+int main(){
   initscr();
   printw("Hello World!");
   getch();
   endwin();
   return 0;
 }
+
+Move cursor:
+
+move(12, (40-5));  // center the string 'Hello World!' on a  80,25 screen.  format is: move(y, x);
+To combine move and print use mvprint(y, x, string)
 
