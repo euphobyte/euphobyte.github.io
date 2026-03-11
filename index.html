@@ -1,15 +1,9 @@
 <html>
 <head>
 <style>
-body{
-  margin: 0;
-  padding: 0;
-}
 #outer{
   display: flex;
   height: 100%;
-  padding: 0;
-  margin: 0;
 }
 #left, #right{
   flex: 1;
@@ -18,6 +12,7 @@ body{
   display: flex;
   border-left: 1px solid lightgrey;
   padding-left: 8px;
+  overflow: hidden;
 }
 iframe{
   flex: 1;
@@ -26,17 +21,17 @@ iframe{
 </style>  
 </head>
 <body>  
-<pre>
 <div id="outer">
-<div id="left">  
+<div id="left">
+<pre>
 Exploring Digital Technology
   
 - <a href="ncurses.txt" target="frame_a">ncurses.txt</a>
+</pre>
 </div>
 <div id="right">
 <iframe name="frame_a"></iframe>  
 </div>  
 </div>  
-</pre>
 </body>  
 </html>
