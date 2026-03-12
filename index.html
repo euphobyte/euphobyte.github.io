@@ -10,7 +10,7 @@ window.addEventListener("load", (event) => {
 function initList(){
   const el=document.querySelector("#list1");
   lines.forEach((str) => {
-    const ln= document.createElement("a");
+    const ln= document.createElement("li");
     ln.innerText = str;
     el.appendChild(ln);                
   });  
