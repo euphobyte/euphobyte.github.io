@@ -1,0 +1,11 @@
+PC BIOS
+
+Real mode 16-bits 8086 compatible ROM routines available at boot time for a PC since 1983. The working of it is best illustrated through calling them in assembler.
+
+INT 10h
+
+Set graphics mode:
+
+MOV AH, 0x00
+MOV BL, 0x03
+INT 0x10
