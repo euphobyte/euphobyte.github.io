@@ -12,8 +12,13 @@ function initList(){
   lines.forEach((str) => {
     const ln= document.createElement("li");
     ln.innerText = str;
+    ln.addEvent("click", clicked_item);
     el.appendChild(ln);                
   });  
+}
+
+function clickedItem(e){
+  alert(e.target.innerText);
 }
 </script>  
 <style>
