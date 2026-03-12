@@ -27,10 +27,10 @@ int main(){
   int sz=40;
   char name[sz];
   initscr();
-  addstr("First name: ");
+  addstr("Name: ");
   refresh();
   getnstr(name, sz-1);
-  printw("Hello! %s", name);
+  printw("Hello, %s", name);
   getch();
   endwin();
   return 0;
