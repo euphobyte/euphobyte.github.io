@@ -1,8 +1,8 @@
 PC BIOS
 
-Real mode 16-bits 8086 compatible ROM routines available at boot time for a PC since 1983. The working of it is best illustrated through calling them in an assembler.
+Real mode 16-bits 8086 compatible ROM routines available at boot time for a PC since 1983. The working of it is best illustrated by calling them in an assembler.
 
-INT 10h
+INT 10h Video
 
 Set video mode:
 
@@ -10,8 +10,11 @@ MOV AH, 0x00
 MOV BL, 0x03
 INT 0x10
 
-┌──────┬────────┐
-│ AH=10│        │
-├──────┼────────┤
-│ AH=13│        │
-└──────┴────────┘
+┌─────────────────┬────────┬────────────┬────────┐
+│ Function        │ Code   │ Parameters │ Return │
+├─────────────────┼────────┼────────────┼────────┤
+│ Video Mode      │ AH=0h  │ BL=Mode    │        │
+├─────────────────┼────────┼────────────┼────────┤
+│ Print Teletype  │ AH=0Eh | AL=char    |        │
+└─────────────────┴────────┴────────────┴────────┘
+
