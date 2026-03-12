@@ -12,7 +12,7 @@ function initList(){
   lines.forEach((str) => {
     const ln= document.createElement("li");
     ln.innerText = str;
-    ln.addEvent("click", clicked_item);
+    ln.addEvent("click", clickedItem);
     el.appendChild(ln);                
   });  
 }
