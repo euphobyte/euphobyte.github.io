@@ -1,4 +1,4 @@
-Using ncurses in Linux console c program
+Using ncurses in Linux console C program
 
 - Install the library: $ sudo apt-get install ncurses-dev
 - To compile: $ gcc -o hello hello.c -lncurses
