@@ -18,12 +18,12 @@ function initList(){
 }
 
 function clickedItem(e){
-  alert(e.target.innerText);
+  const el = document/querySelector("#frame_a");
+  el.src = e.target.innerText;
 }
 </script>  
 <style>
-a{
-  text-decoration: none;
+li{
   cursor: pointer;
 }
 #outer{
@@ -57,7 +57,7 @@ Exploring Digital Technology
 </pre>
 </div>
 <div id="right">
-<iframe name="frame_a"></iframe>  
+<iframe id="frame_a"></iframe>  
 </div>  
 </div>  
 </body>  
