@@ -6,14 +6,14 @@ const lines = ["ncurses.txt", "pc_bios.txt"];
 window.addEventListener("load", (event) => {
   initList();
 });
-initList(){
+
+function initList(){
   const el=document.querySelector("#list1");
   lines.forEach((str) => {
     const ln= document.createElement("a");
     ln.innerText = str;
     el.appendChild(ln);                
-  });
-  
+  });  
 }
 </script>  
 <style>
