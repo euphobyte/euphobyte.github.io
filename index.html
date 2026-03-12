@@ -8,10 +8,11 @@ window.addEventListener("load", (event) => {
 });
 initList(){
   const el=document.querySelector("#list1");
-  lines.forEach((str) => const ln= document.createElement("a");
+  lines.forEach((str) => {
+    const ln= document.createElement("a");
     ln.innerText = str;
-    el.appendChildElement(ln);                
-  );
+    el.appendChild(ln);                
+  });
   
 }
 </script>  
