@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Euphobyte</title>
+<style>
+#outer{
+  display: flex;
+  height: 100%;
+}
+#left, #right{
+  flex: 1;
+}
+#right{
+  display: flex;
+  border-left: 1px solid lightgrey;
+  padding-left: 8px;
+  overflow: hidden;
+}
+iframe{
+  flex: 1;
+  border: none;
+}
+</style>  
+</head>
+<body>  
+<div id="outer">
+<div id="left">
+Exploring Digital Technology
+<pre>
+ - <a href="ncurses.txt" target="frame_a">ncurses.txt</a>
+  - <a href="pc_bios.txt" target="frame_a">pc_bios.txt</a> 
+</pre>
+</div>
+<div id="right">
+<iframe name="frame_a"></iframe>  
+</div>  
+</div>  
+</body>  
+</html>
