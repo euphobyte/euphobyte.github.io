@@ -48,8 +48,9 @@ Then copy the boot sector onto the floppy image:
 
 $ dd if=boot.bin of=floppy.img conv=notrunc
 
-Then coppy the floppy image to a floppy drive:
+Then copy the floppy image to a floppy drive (destroys existing data on disk):
 
 $ dd if=floppy.img of=/dev/fd0
+
 
 
