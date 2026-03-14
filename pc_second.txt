@@ -1,0 +1,43 @@
+After booting a disk and displaying a message, the second stage is to load the second sector of the disk.  Then jump to the start address where the sector was loaded in memory.
+
+[org 0x7C00]
+[bits 16]
+
+start:
+  cli
+  xor ax, ax
+  mov ss, ax
+  mov ds, ax
+  mov es, ax
+  mov sp, 0x7c00
+  sti
+
+  mov ah, 0x02
+  mov al, 1
+  mov ch, 0
+  mov dh, 0
+  mov cl, 2
+  mov bx, second
+  int 0x13
+  jmp second
+
+times 510 - ($ - $$) db 0
+dw 0xAA55
+
+second:
+  mov ah, 0x0e
+  mov al, 'X'
+  int 0x10
+  hlt
+
+times 1024 - ($ - $$) db 0
+
+Assemble the file:
+
+$ nasm -f second.s -o second.bin
+
+The write the two sectors to the disk
+
+$ dd if=second.bin of=/dev/fd0
+
+(deleting the current contents of the disk).
