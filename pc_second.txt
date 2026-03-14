@@ -12,7 +12,7 @@ start:
   mov sp, 0x7c00
   sti
 
-  mov ah, 0x02
+  mov ah, 2
   mov al, 1
   mov bx, second
   mov cl, 2
