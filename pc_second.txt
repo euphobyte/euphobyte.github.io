@@ -36,7 +36,7 @@ Assemble the file:
 
 $ nasm -f second.s -o second.bin
 
-The write the two sectors to the disk
+Then write the two sectors to the disk:
 
 $ dd if=second.bin of=/dev/fd0
 
