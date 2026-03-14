@@ -47,3 +47,5 @@ $ dd if=/dev/zero of=floppy.img bs=512 count=2880
 Then copy the boot sector onto the floppy image:
 
 $ dd if=boot.bin of=floppy.img conv=notrunc
+
+(deleting the current contents of the disk).
