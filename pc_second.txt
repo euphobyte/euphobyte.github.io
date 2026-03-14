@@ -14,10 +14,10 @@ start:
 
   mov ah, 0x02
   mov al, 1
+  mov bx, second
+  mov cl, 2
   mov ch, 0
   mov dh, 0
-  mov cl, 2
-  mov bx, second
   int 0x13
   jmp second
 
