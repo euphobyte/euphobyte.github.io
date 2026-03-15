@@ -6,9 +6,9 @@ After booting a disk and displaying a message, the second stage is to load the s
 start:
   cli
   xor ax, ax
-  mov ss, ax
   mov ds, ax
   mov es, ax
+  mov ss, ax
   mov sp, 0x7c00
   sti
 
