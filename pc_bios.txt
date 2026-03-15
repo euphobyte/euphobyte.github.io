@@ -18,5 +18,17 @@ INT 0x10
 │ Print Teletype  │ AH=0Eh │ AL=char    │        │
 └─────────────────┴────────┴────────────┴────────┘
 
+INT 16h Keyboard
+
+Read ASCII character:
+
+MOV AH,0x00
+INT 16h
+
+┌─────────────────┬────────┬────────────┬──────────┐
+│ Function        │ Code   │ Parameters │ Return   │
+├─────────────────┼────────┼────────────┼──────────┤
+│ Read Character  │ AH=0h  │            │ AL=ascii │
+└─────────────────┴────────┴────────────┴──────────┘
 
 
