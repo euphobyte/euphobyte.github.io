@@ -1,0 +1,28 @@
+INT 16h
+
+[bits 16]
+[org 0x7c00]
+
+  cli
+  xor ax, ax
+  mov ds, ax
+  mov es, ax
+  mov ss, ax
+  mov sp, 0x7c00
+  sti
+
+start:
+  mov ah, 0x00
+  int 0x16
+
+  cmp al, 0x1b
+  je stop
+
+  mov ah, 0x0e
+  int 0x010
+  jmp start
+
+stop:
+    hlt
+times 510-($-$$) db 0
+dw 0xAA55
