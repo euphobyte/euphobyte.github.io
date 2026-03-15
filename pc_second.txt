@@ -22,7 +22,7 @@ start:
   jmp second
 
 times 510 - ($ - $$) db 0
-dw 0xAA55
+dw 0xaa55
 
 second:
   mov ah, 0x0e
