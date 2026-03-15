@@ -1,4 +1,4 @@
-After booting a disk and displaying a message, the second stage is to load the second sector of the disk.  Then jump to the start address where the sector was loaded in memory.
+After booting a disk and displaying a message, the second stage is to load the second sector from the disk.  Then jump to the start address where the sector was loaded in memory.
 
 [org 0x7C00]
 [bits 16]
