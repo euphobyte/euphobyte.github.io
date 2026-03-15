@@ -1,4 +1,4 @@
-INT 16h
+Read Keyboard, boot sector program
 
 [bits 16]
 [org 0x7c00]
