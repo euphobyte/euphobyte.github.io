@@ -18,6 +18,28 @@ INT 0x10
 │ Print Teletype  │ AH=0Eh │ AL=char    │        │
 └─────────────────┴────────┴────────────┴────────┘
 
+INT 13h Disk Drive
+
+Read sectors to memory:
+
+MOV AH, 0x02
+MOV AL, 0x01
+MOV BX, buf
+MOV CL, 0x02
+MOV CH, 0x00
+MOV DH, 0x00
+INT 0x13
+
+┌─────────────────┬────────┬────────────┬────────┐
+│ Function        │ Code   │ Parameters │ Return │
+├─────────────────┼────────┼────────────┼────────┤
+│ Read Sectors    │ AH=2h  │ AL=count   │ CF err │
+│                 │        │ ES:BX=buf  │        │
+│                 │        │ CL=offset  │        │
+│                 │        │ CH=cyl     │        │
+│                 │        │ AL=head    │        │
+└─────────────────┴────────┴────────────┴────────┘
+
 INT 16h Keyboard
 
 Read ASCII character:
