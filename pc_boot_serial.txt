@@ -7,7 +7,7 @@ Read data from serial port and print on screen:
 port equ 0x3f8
 
   mov ah, 0x00      ; Init port
-  mov al, 0xe3      ; Config (11100011b = 9600, n, 8, 1)
+  mov al, 0xe3      ; Config 11100011b => 9600, n, 8, 1
   mov dx, 0x00      ; Com1
   int 0x14
 
