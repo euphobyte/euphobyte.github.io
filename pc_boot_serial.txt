@@ -1,4 +1,4 @@
-Boot Sector Serial Port
+Serial Port, boot sector program
 
 Read data from serial port and print on screen:
 
