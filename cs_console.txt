@@ -1,0 +1,43 @@
+C# Console
+
+Locate the C# compiler on a Windows PC:
+On drive C look for the Windows directory followed by Microsoft.NET and then Framework (32bit version). In that directory locate the most recent version. Here one finds an older version of the C# compiler which works fine for this type of development.
+From the Windows console commandline update the global path variable with the directory that contains the file csc.exe:
+
+> path = %path%;c:\Windows\Microsoft.NET\Framework\v....... (latest version)
+
+Basic example of a console application:
+
+
+using System;
+
+static class mainclass{
+  static void Main(string[] args){
+    Console.WriteLine("Hello World!");
+  }
+}
+
+Save file as hello.cs.  Now compile the program for a console executable:
+
+> csc hello.cs
+
+List the serial ports on this computer with their parameters:
+
+using System;
+using System.IO.Ports;
+
+static class mainclass{
+  static void Main(){
+    Console.WriteLine("Serial ports found:");
+    foreach(string port in SerialPort.GetPortNames()){
+      Console.Write(port);
+      SerialPort sp = new SerialPort(port);
+      Console.Write(" / " + sp.DataBits);
+      Console.Write(" / " + sp.StopBits);
+      Console.Write(" / " + sp.Parity);
+      Console.Write(" / " + sp.Handshake);
+      Console.Write(" / " + sp.BaudRate);
+      Console.WriteLine("");
+    }
+  }	
+}
