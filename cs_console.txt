@@ -17,7 +17,7 @@ static class mainclass{
   }
 }
 
-Save file as hello.cs.  Now compile the program for a console executable:
+Save file as hello.cs.  Now compile the program to a console executable:
 
 > csc hello.cs
 
