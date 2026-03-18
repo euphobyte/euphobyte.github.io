@@ -32,12 +32,19 @@ static class mainclass{
     foreach(string port in SerialPort.GetPortNames()){
       Console.Write(port);
       SerialPort sp = new SerialPort(port);
-      Console.Write(" / " + sp.DataBits);
-      Console.Write(" / " + sp.StopBits);
-      Console.Write(" / " + sp.Parity);
-      Console.Write(" / " + sp.Handshake);
-      Console.Write(" / " + sp.BaudRate);
+      Console.Write(": " + sp.BaudRate);
+      Console.Write(", " + sp.DataBits);
+      Console.Write(", " + sp.StopBits);
+      Console.Write(", " + sp.Parity);
+      Console.Write(", " + sp.Handshake);
       Console.WriteLine("");
     }
   }	
 }
+
+Save this program as lsuart.cs then compile: 
+
+> csc lsuart.cs
+
+
+
