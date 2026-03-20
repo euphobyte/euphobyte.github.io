@@ -1,0 +1,38 @@
+C# Serial Port
+
+Source for a dumpserial command:
+
+using System;
+using System.IO.Ports;
+using System.Threading;
+
+public class PortChat{
+
+  public static void Main(){
+    SerialPort _serialPort = new SerialPort("COM3", 9600);
+     _serialPort.Open();
+    int i = 0;
+    string str="";
+    while(true){
+      if(_serialPort.BytesToRead > 0){
+        byte b = (byte)_serialPort.ReadByte();
+        Console.Write("{0:X2} ", b);
+        if(b > 32)
+          str += (char) b;
+        else
+          str += ".";
+        if(i==15){
+          Console.WriteLine("  " + str);
+          str = "";
+          i = 0;
+        }
+        i++;
+      }
+    }
+  }
+}
+
+Save this program as dumpserial.cs then compile:
+
+> csc dumpserial.cs
+
