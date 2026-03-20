@@ -9,13 +9,13 @@ using System.Threading;
 public class PortChat{
 
   public static void Main(){
-    SerialPort _serialPort = new SerialPort("COM3", 9600);
-     _serialPort.Open();
+    SerialPort sp = new SerialPort("COM3", 9600);
+    sp.Open();
     int i = 0;
     string str="";
     while(true){
-      if(_serialPort.BytesToRead > 0){
-        byte b = (byte)_serialPort.ReadByte();
+      if(sp.BytesToRead > 0){
+        byte b = (byte)sp.ReadByte();
         Console.Write("{0:X2} ", b);
         if(b > 32)
           str += (char) b;
