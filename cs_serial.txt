@@ -35,7 +35,7 @@ Save this program as dumpserial.cs then compile:
 > csc dumpserial.cs
 
 
-Source to send file via the serial port to another system:
+Source to send file via the serial port to another system using a 16 byte buffer:
 
 using System;
 using System.IO;
