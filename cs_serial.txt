@@ -58,7 +58,7 @@ static class MainClass{
     port.Open();
 
     do{
-      n = bs.Read(buf, 0 ,16);
+      n = bs.Read(buf, 0, 16);
       port.Write(buf, 0, n);
     }while(n == 16);
     bs.Close();
