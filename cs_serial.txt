@@ -4,12 +4,10 @@ Source for a dumpserial command:
 
 using System;
 using System.IO.Ports;
-using System.Threading;
 
-public class PortChat{
-
-  public static void Main(){
-    SerialPort sp = new SerialPort("COM3", 9600);
+public class MainClass{
+  public static void Main(string[] args){
+    SerialPort sp = new SerialPort(args[0], 9600);
     sp.Open();
     int i = 0;
     string str="";
@@ -36,3 +34,41 @@ Save this program as dumpserial.cs then compile:
 
 > csc dumpserial.cs
 
+
+Source to send file via the serial port to another system:
+
+using System;
+using System.IO;
+using System.IO.Ports;
+using System.Text;
+
+static class MainClass{
+  static void Main(string[] args){
+    byte[] buf = new byte[16];
+    int n = 0;
+    FileStream fs = File.Open(args[0], FileMode.Open);
+    BufferedStream bs = new BufferedStream(fs);
+    Console.WriteLine("\r\nTransmit file length: {0}\r\n", fs.Length);
+
+    SerialPort port = new SerialPort(args[1]);
+    port.BaudRate = 9600;
+    port.Parity = Parity.None;
+    port.ReadTimeout = 1000;
+    port.StopBits = StopBits.One;
+    port.Open();
+
+    do{
+      n = bs.Read(buf, 0 ,16);
+      port.Write(buf, 0, n);
+    }while(n == 16);
+    bs.Close();
+  }
+}
+
+Save as sendserial.cs then compile:
+
+> csc sendserial.cs
+
+Execute:
+
+> sendserial file1.txt com3
