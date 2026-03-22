@@ -15,11 +15,11 @@ public class MainClass{
       if(sp.BytesToRead > 0){
         byte b = (byte)sp.ReadByte();
         Console.Write("{0:X2} ", b);
-        if(b > 32)
+        if(b > 0x20)
           str += (char) b;
         else
           str += ".";
-        if(i==15){
+        if(i == 0x0F){
           Console.WriteLine("  " + str);
           str = "";
           i = 0;
