@@ -9,7 +9,7 @@ Packet:
 │ 1 byte  │ 1 byte │ 1 byte   │ 128 bytes │ 1 byte   │
 └─────────┴────────┴──────────┴───────────┴──────────┘
 
-- Start with NAK 0x15 to start transmission. 
+- Start with NAK 0x15 to initiate protocol. 
 - After each packet followed with ACK 0x06 when received or NAK 0x15 if not.  
 - Wait 10 seconds and retry 10 times. 
 - After last packet send EOT 0x04
