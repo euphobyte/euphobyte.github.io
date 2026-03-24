@@ -3,7 +3,7 @@ XMODEM File Transfer
 Packet:
 
 ┌─────────┬────────┬──────────┬───────────┬──────────┐
-│ SOH     │ packet │ Inverted │ Data      │ Checksum │
+│ SOH     │ Packet │ Inverted │ Data      │ Checksum │
 │ 0x01    │ Number │ Number   │           │          |
 ├─────────┼────────┼──────────┼───────────┼──────────┤
 │  1 byte │ 1 byte │ 1 byte   │ 128 bytes │ 1 byte   │
