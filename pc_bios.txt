@@ -44,7 +44,7 @@ INT 16h Keyboard
 
 Read ASCII character:
 
-MOV AH,0x00
+MOV AH, 0x00
 INT 16h
 
 ┌─────────────────┬────────┬────────────┬──────────┐
