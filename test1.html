@@ -1,9 +1,19 @@
+<html>
+<head>  
 <script>
-getText("https://royal-hall-df2f.sjstok5.workers.dev/");
+function test(){  
+  getText("https://royal-hall-df2f.sjstok5.workers.dev/");
+}
 
 async function getText(file) {
   let myObject = await fetch(file);
   let myText = await myObject.text();
   alert(myText);
+  console.log(myText);
 }
 </script>
+</head>
+<body>
+<button click="test()">Test</button>  
+</body>  
+</html>
