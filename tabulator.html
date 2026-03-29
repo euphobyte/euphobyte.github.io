@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator.min.css" rel="stylesheet">
+<style>
+body{
+  font-family:  Trebuchet MS;
+}
+</style>
+</head>
+<body>
+<div id="example-table"></div> 
+<script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>  
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+<script type="text/javascript">
+var tabdata = [
+  {id:1, name:"Peter Smith", city:"London", country:"UK", telephone:"0703332101"},
+  {id:2, name:"John Black", city:"London", country:"UK", telephone:"0703332102"},
+  {id:3, name:"Roger Green", city:"Dublin", country:"Ireland", telephone:"0703332103"},
+  {id:4, name:"Fred Brown", city:"Dublin", country:"Ireland", telephone:"0703332104"},
+  {id:5, name:"Lucy Willow", city:"Dallas", country:"US", telephone:"0703332105"},
+ ];
+ 
+ var table = new Tabulator("#example-table", {
+  height:140, 
+  data:tabdata, 
+  layout:"fitColumns",
+  columns:[ 
+   {title:"Name", field:"name", sorter:"string", width:150},
+   {title:"City", field:"city", sorter:"number", hozAlign:"left"},
+   {title:"Country", field:"country", sorter:"string", headerSort:false},
+   {title:"Telephone", field:"telephone", sorter:"number", hozAlign:"left"},
+  ],
+ });
+ 
+ table.on("rowClick", function(e, row){
+  alert("Row " + row.getIndex() + " Clicked!!!!");
+ });
+</script>
+</body>
+</html>
