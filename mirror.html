@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+<style>
+.container {
+  position: relative;
+  margin: auto;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 45%;
+}
+
+.code-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid lightgrey;
+}
+
+.code-container:last-child {
+  margin-bottom: 0;
+}
+</style>
+</head>
+<body translate="no" >
+<div class="container">
+<div class="code-container">
+<textarea id="code">
+<!-- xml/html syntax -->
+<!DOCTYPE html>
+<html>
+<p>Hello World!!</p>
+</html>
+</textarea>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
+<script id="rendered-js" >
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    styleActiveLine: true,
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    autoCloseTags: true,
+    mode: "htmlmixed"
+});
+editor.setSize(null, 400);
+</script>
+</body>
+</html>
+
