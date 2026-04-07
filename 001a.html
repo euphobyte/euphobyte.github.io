@@ -36,7 +36,7 @@ height: '390',
 width: '640',
 videoId: el.value,
 events: {
-onReady: e => e.target.playVideo()
+onReady: e => e.target.playVideo();
 }
 });
 });
@@ -45,7 +45,8 @@ onReady: e => e.target.playVideo()
 function test(){
 var el = document.getElementById('num');
 var if1 = document.getElementById('youtube-player');
-if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1"
+if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1&autoplay=1";
+
 }
 </script>
 </body>
