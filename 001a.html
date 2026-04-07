@@ -21,7 +21,7 @@ src="https://www.youtube-nocookie.com/embed/GumP37XZ8SY?enablejsapi=1"
 
 <hr>
 <input id="num"></input>
-<button onclick="test()">Test</button>
+<button onclick="test()">Test</button>&nbsp;&nbsp;<button onclick="play()">Play</button>
 <hr>
 
 <input type="submit" value="Submit" id="submit">
@@ -43,10 +43,14 @@ onReady: e => e.target.playVideo()
 
 
 function test(){
-var el = document.getElementById('num');
-var if1 = document.getElementById('youtube-player');
-if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
-
+  var el = document.getElementById('num');
+  var if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+}
+function play(){
+  const if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+  if1.playVideo();
 }
 </script>
 </body>
