@@ -1,0 +1,31 @@
+<div><pre id="my-div">
+</pre></div>
+<script>
+const response1  = tst();
+
+function tst(){
+  let xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+      if (xmlhttp.status == 200) {
+        document.getElementById("my-div").textContent = xmlhttp.responseText;
+      }else if (xmlhttp.status == 400) {
+         alert('There was an error 400');
+      }
+    else{
+      alert('something else other than 200 was returned');
+     }
+    }
+  };
+
+  xmlhttp.open("GET", "https://euphobyte.github.io/doc/pc_bios.txt", true);
+  xmlhttp.send();
+}
+
+</script>
+<style>
+pre{
+  white-space: pre-wrap;  
+  font: normal 12.5px Consolas;
+}
+</style>
