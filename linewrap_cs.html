@@ -1,4 +1,4 @@
-<div><pre id="my-div">
+<div><pre id="txt1">
 </pre></div>
 <script>
 const response1  = tst();
@@ -8,12 +8,12 @@ function tst(){
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == XMLHttpRequest.DONE) {
       if (xmlhttp.status == 200) {
-        document.getElementById("my-div").textContent = xmlhttp.responseText;
+        document.getElementById("txt1").textContent = xmlhttp.responseText;
       }else if (xmlhttp.status == 400) {
-         alert('There was an error 400');
+         alert('http 400 error');
       }
     else{
-      alert('something else other than 200 was returned');
+      alert('Error http call');
      }
     }
   };
@@ -24,7 +24,7 @@ function tst(){
 
 </script>
 <style>
-pre{
+#txt1{
   white-space: pre-wrap;  
   font: normal 12.5px Consolas;
 }
