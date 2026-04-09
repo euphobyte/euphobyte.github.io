@@ -9,15 +9,13 @@ function tst(){
     if (xmlhttp.readyState == XMLHttpRequest.DONE) {
       if (xmlhttp.status == 200) {
         document.getElementById("txt1").textContent = xmlhttp.responseText;
-      }else if (xmlhttp.status == 400) {
-         alert('http 400 error');
+      }else{ 
+        alert('Http error');
       }
-    else{
+    }else{
       alert('Error http call');
-     }
     }
   };
-
   xmlhttp.open("GET", "https://euphobyte.github.io/doc/pc_bios.txt", true);
   xmlhttp.send();
 }
