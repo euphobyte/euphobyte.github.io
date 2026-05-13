@@ -1,0 +1,51 @@
+*** Install Debian
+
+- Download Debian 12.12 LTS for the Thin Client based on the VIA Eden X2 U4200 @ 1.0+ GHz, 32bit version seemed a good option.
+- Download latest version of Rufus to copy the ISO image to a USB thumb drive (32GB)
+- In Rufus use the default settings and select to ISO image of Debian netinst approx. 650MB
+- Boot the USB drive on the Thin Client and select graphical installation.
+- For the software packages only choose Standard System Utilities and the SSH server
+- Debian is then installed on the 16GB drive in the Thin Client and takes up approx. 10% of the diskspace 1.2GB
+
+Reboot the machine. It is clear that the default of 640 x 480 pixel resolution is not correct for the 17 inch HP monitor.
+- To change the resolution on boot for Grub edit the file: 
+
+$ sudo nano /etc/default/grub
+
+- add the following settings to thos file:
+
+GRUB_GFXMODE=1280x1024
+GRUB_GFXPAYLOAD_LINUX=keep
+
+*** Install Nodejs
+
+$ sudo apt-get install nodejs
+
+This will give an error for missing sse2 instructions, the application still works.
+
+*** Tiny example of a webserver in nodejs, just to test the setup
+
+let http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World!');
+}).listen(8080);
+
+*** Remote debugging in browser on workstation
+
+On Thin CLient running Nodejs server:
+
+$ node --inspect server.js
+
+On the commandline of the workstation running the browser create a SSH-tunnel:
+
+> ssh -L 9222:localhost:9229 user@10.0.0.1
+
+Then in the browser open a new tabpage and type:
+
+browser_name://inspect/#devices
+
+From that page select the option 'inspect' to go to the source of the remote server and set the breakpoints for debugging.
+
+
+> 
