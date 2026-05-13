@@ -21,7 +21,7 @@ GRUB_GFXPAYLOAD_LINUX=keep
 
 $ sudo apt-get install nodejs
 
-This will give an error for missing sse2 instructions, the application still works.
+This will give an error for missing sse2 instructions, the application still works. The installation takes up approx 1% of the 16GB drive.
 
 *** Tiny example of a webserver in nodejs, just to test the setup
 
