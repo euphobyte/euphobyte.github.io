@@ -17,7 +17,7 @@ $ sudo nano /etc/default/grub
 GRUB_GFXMODE=1280x1024
 GRUB_GFXPAYLOAD_LINUX=keep
 
-*** Install Nodejs
+*** Install NodeJS
 
 $ sudo apt-get install nodejs
 
@@ -31,9 +31,9 @@ http.createServer(function (req, res) {
   res.end('Hello World!');
 }).listen(8080);
 
-*** Remote debugging in browser on workstation
+*** Remote debugging of nodejs in browser on workstation
 
-On Thin CLient running Nodejs server:
+On Thin CLient running nodejs server:
 
 $ node --inspect server.js
 
