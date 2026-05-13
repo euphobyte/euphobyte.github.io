@@ -12,7 +12,7 @@ Reboot the machine. It is clear that the default of 640 x 480 pixel resolution i
 
 $ sudo nano /etc/default/grub
 
-- add the following settings to thos file:
+- add the following settings to this file:
 
 GRUB_GFXMODE=1280x1024
 GRUB_GFXPAYLOAD_LINUX=keep
