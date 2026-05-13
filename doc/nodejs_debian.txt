@@ -46,6 +46,3 @@ Then in the browser open a new tabpage and type:
 browser_name://inspect/#devices
 
 From that page select the option 'inspect' to go to the source of the remote server and set the breakpoints for debugging.
-
-
-> 
