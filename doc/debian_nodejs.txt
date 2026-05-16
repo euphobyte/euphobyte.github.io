@@ -17,6 +17,10 @@ $ sudo nano /etc/default/grub
 GRUB_GFXMODE=1280x1024
 GRUB_GFXPAYLOAD_LINUX=keep
 
+Then update GRUB by executing:
+
+$ sudo update-grub
+
 *** Install NodeJS
 
 $ sudo apt-get install nodejs
