@@ -8,6 +8,12 @@ width: 50%;
 aspect-ratio: 16 / 9;
 }
 </style>
+<script>
+function test(){  
+  var if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube-nocookie.com/embed/H7Q3pVAOSLE?enablejsapi=1";
+}
+</script>  
 </head>
 <body>
 <iframe
@@ -15,5 +21,7 @@ id="youtube-player"
 src="https://www.youtube-nocookie.com/embed/GumP37XZ8SY?enablejsapi=1"
 >
 </iframe>
+<hr>
+<button>Play</button>
 </body>
 </html>
