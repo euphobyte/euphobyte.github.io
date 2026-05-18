@@ -42,7 +42,7 @@ onready="onPlayerReady(event)">
 var el = document.getElementById('num');
 var pl1="";
 document.getElementById('submit').addEventListener('click', () => {
-new YT.Player('player1', {
+player = new YT.Player('player1', {
 height: '390',
 width: '640',
 videoId: el.value,
