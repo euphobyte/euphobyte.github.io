@@ -40,6 +40,7 @@ onready="onPlayerReady(event)">
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 var el = document.getElementById('num');
+var pl1="";
 document.getElementById('submit').addEventListener('click', () => {
 new YT.Player('player', {
 height: '390',
@@ -53,9 +54,10 @@ onReady: e => e.target.playVideo()
 
 
 function test(){
-  var el = document.getElementById('num');
-  var if1 = document.getElementById('youtube-player');
-  if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+  //var el = document.getElementById('num');
+  //var if1 = document.getElementById('youtube-player');
+  //if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+  player.loadVideoById(el.value);
 }
 function play(){
   const if1 = document.getElementById('youtube-player');
