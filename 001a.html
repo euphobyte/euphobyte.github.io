@@ -1,23 +1,103 @@
 <html>
 <head>
-<script src="https://www.youtube.com/iframe_api"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>
+iframe {
+width: 50%;
+aspect-ratio: 16 / 9;
+}
+</style>
+<script>
+function test(){  
+  var if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube.com/embed/H7Q3pVAOSLE?enablejsapi=1";
+}
+function onPlayerReady(event){
+  event.target.playVideo();
+}
+</script>  
 </head>
 <body>
-<div id="iframe-video" class="video-iframe"></div>
+<iframe
+id="youtube-player"
+src="https://www.youtube.com/embed/GumP37XZ8SY?enablejsapi=1"
+onready="onPlayerReady(event)">
+</iframe>
+<hr>
+<button onclick="test()">Play</button>
+</body>
+</html>
+<hr>
+<input id="num"></input>
+<button onclick="test()">Test</button>&nbsp;&nbsp;<button onclick="play()">Play</button>
+<hr>
+
+<input type="submit" value="Submit" id="submit">
+<div id="player"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-player = new YT.Player('iframe-video', {
-  videoId: 'GumP37XZ8SY',
-    playerVars: {
-      rel: '0'
-    },
-    events: {
-      'onReady': playerInitialize
-    }
+var el = document.getElementById('num');
+document.getElementById('submit').addEventListener('click', () => {
+new YT.Player('player', {
+height: '390',
+width: '640',
+videoId: el.value,
+events: {
+onReady: e => e.target.playVideo()
+}
+});
 });
 
-function playerInitialize (event) {
-  event.target.playVideo(); 
+
+function test(){
+  var el = document.getElementById('num');
+  var if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+}
+function play(){
+  const if1 = document.getElementById('youtube-player');
+  if1.src = "https://www.youtube-nocookie.com/embed/" + el.value + "?enablejsapi=1";
+  if1.playVideo();
+  const if2 = document.getElementById("uniqueDOMElementID1");
+  if2.playVideo();
 }
 </script>
-</body>
-</html>    
+
+
+<pre>
+GumP37XZ8SY
+2oUBxyXxyFo
+https://www.youtube.com/watch?v=H7Q3pVAOSLE
+https://www.youtube.com/watch?v=6xlX1WNzaWI
+https://www.youtube.com/watch?v=DkytJLoxGmQ
+https://www.youtube.com/watch?v=epHOF91ZUFk
+https://www.youtube.com/watch?v=P7jeqAyYZME
+https://www.youtube.com/watch?v=mHyxPIh3c5w
+https://www.youtube.com/watch?v=wC_kCnm3GYQ
+https://www.youtube.com/watch?v=7BKKaKT_dtM
+https://www.youtube.com/watch?v=rgX3RRIUH-0
+https://www.youtube.com/watch?v=7TvfPbT_fTY
+https://www.youtube.com/watch?v=H0PLHZhvg4Y
+https://www.youtube.com/watch?v=0Q8az-0xnVA
+https://www.youtube.com/watch?v=ikQaotE97wA
+https://www.youtube.com/watch?v=cNIyGVKUu6s
+https://www.youtube.com/watch?v=SlQAbhBY3gg
+https://www.youtube.com/watch?v=DiebMADvbPc
+https://www.youtube.com/watch?v=YnvxJ0qt6-E
+https://www.youtube.com/watch?v=o_LaeyZTVDo
+https://www.youtube.com/watch?v=TMnns_iIB2M
+https://www.youtube.com/watch?v=LG-bonJ1T4g
+https://www.youtube.com/watch?v=Iuk-C3NPdZU
+https://www.youtube.com/watch?v=oOp3w0jwjRE
+https://www.youtube.com/watch?v=78Ovu5Xvrio
+https://www.youtube.com/watch?v=O0eTbthljBY
+https://www.youtube.com/watch?v=wxHtp1Yy9fM
+https://www.youtube.com/watch?v=O465enGz03w
+https://www.youtube.com/watch?v=SjkP3Gwt_g4
+https://www.youtube.com/watch?v=NelzIKT9ON4
+https://www.youtube.com/watch?v=Ionmci2PYMg
+https://www.youtube.com/watch?v=uX8Nj8ABEI8
+https://www.youtube.com/watch?v=s8W1542QQoo
+</pre>
+
