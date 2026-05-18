@@ -13,13 +13,16 @@ function test(){
   var if1 = document.getElementById('youtube-player');
   if1.src = "https://www.youtube.com/embed/H7Q3pVAOSLE?enablejsapi=1";
 }
+function onPlayerReady(event){
+  event.target.playVideo();
+}
 </script>  
 </head>
 <body>
 <iframe
 id="youtube-player"
 src="https://www.youtube.com/embed/GumP37XZ8SY?enablejsapi=1"
->
+onready="onPlayerReady(event)">
 </iframe>
 <hr>
 <button onclick="test()">Play</button>
