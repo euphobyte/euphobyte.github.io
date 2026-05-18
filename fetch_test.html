@@ -1,15 +1,17 @@
-<!DOCTYPE html>
 <html>
 <body>
 <p id="demo">Fetch a file to change this text.</p>
+
 <script>
+getText("fetch_info.txt");
 
-let file = "fetch_info.txt"
-
-fetch (file)
-.then(response => console.log(response.status))
-.then(txt1 => document.getElementById("demo").innerHTML = txt1);
-alert("Hello");
+async function getText(file) {
+  let x = await fetch(file);
+  let y = await x.text();
+  document.getElementById("demo").innerHTML = y;
+}
 </script>
+
 </body>
 </html>
+
