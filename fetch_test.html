@@ -7,8 +7,8 @@
 let file = "fetch_info.txt"
 
 fetch (file)
+.then(response => console.log(response.status))
 .then(response => document.getElementById("demo").innerHTML = response.text());
-
 </script>
 </body>
 </html>
