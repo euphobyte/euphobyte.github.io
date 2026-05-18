@@ -18,11 +18,13 @@ function onPlayerReady(event){
 </script>  
 </head>
 <body>
+<div id="player">
 <iframe
 id="youtube-player"
 src="https://www.youtube.com/embed/GumP37XZ8SY?enablejsapi=1"
 onready="onPlayerReady(event)">
 </iframe>
+</div>
 <hr>
 <button onclick="test()">Play</button>
 </body>
@@ -33,7 +35,7 @@ onready="onPlayerReady(event)">
 <hr>
 
 <input type="submit" value="Submit" id="submit">
-<div id="player"></div>
+
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
