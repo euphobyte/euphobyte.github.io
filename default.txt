@@ -1,0 +1,13 @@
+@@page1;learn
+@@[html]
+<h2>Hello</h2>
+<hr>
+<button onclick="test()">Test</button>
+@@[css]
+h2{
+  color: redl
+}
+@@[js]
+function test(){
+  alert("Hello!");
+}
