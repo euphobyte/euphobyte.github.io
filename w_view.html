@@ -1,0 +1,191 @@
+<html><head>
+<link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
+<style>
+#dv1{
+  height: 100%;
+  display: flex;
+}
+#dv1a{
+  flex: 1;
+}
+#dv1b{
+  flex: 3;
+}
+#dv1c{
+  flex: 3;
+}
+#tree{
+  user-select: none;
+  cursor: default;
+}
+#tree > ul{
+  list-style: none;
+  padding: 4px;
+  margin-top: 0;
+}
+ul ul{
+  list-style: none;
+  padding: 0px;
+  margin-top: 0;
+}
+input{ 
+  display: none;
+}
+li:hover{
+  background-color: highlight;
+}
+li ~ ul{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s;
+}
+li ~ ul > li{
+  padding-left: 1em;
+}
+input:checked + ul{
+  max-height: 200px;
+}
+label{
+  display: block;
+}
+#tc, #bc, #tr, #br{
+  border: 1px solid lightgrey;
+  flex: 1;
+}
+#dv1b, #dv1c{
+  display: flex;
+  flex-direction: column;
+}
+#tr{
+  border-left: none;
+  border-bottom: none;
+}
+#br{
+  border-left: none;
+}
+#bc{
+  border-top: none;
+}
+#dv1a{
+  border: 1px solid lightgrey;
+  border-right: none;
+}
+#tc, #bc, #tr, #br{
+  display: flex;
+  flex-direction: column;
+}
+#tx1, #tx2, #tx3{
+  border: none;
+  border-top: 1px solid lightgrey;
+  flex: 1;
+  resize: none;
+  outline: none;
+}
+span{
+  margin: 4px;
+  font-family: 'Barlow Condensed';
+  color: grey;
+}
+button{
+  margin: 4px;
+}
+hr{
+  margin: 4px;
+}
+</style>
+<script>
+function init(){
+  let dc1 = document.querySelector("iframe").contentWindow.document;
+  dc1.oncontextmenu = function(){return false;};
+}
+function run(){
+  let dc1 = document.querySelector("iframe").contentWindow.document;
+  dc1.body.innerHTML = document.getElementById("tx2").value;
+  const sc1 = document.createElement("script");
+  sc1.innerHTML = document.getElementById("tx1").value;
+  dc1.head.appendChild(sc1);
+  const st1 = document.createElement("style");
+  st1.innerHTML = document.getElementById("tx3").value;
+  dc1.head.appendChild(st1);
+}
+function save(){
+  if(confirm("Save local file?")){
+    alert("Saving local file");
+  }
+}
+function load(){
+  if(confirm("Load local file?")){
+
+    var inp = document.createElement('INPUT');
+    inp.setAttribute('type', 'FILE');
+    inp.addEventListener('change', readFile);
+    inp.addEventListener('click', function(){this.value=null;}, false);
+    inp.click();
+  }else{
+    if(prompt("Enter url:")){
+      alert("load from url");
+    }
+  }
+}
+
+function readFile(e){
+  var file = e.target.files[0]; 
+  if (!file) return;
+  var reader = new FileReader();
+  reader.addEventListener('load', processLines);
+  reader.readAsText(file);
+}
+
+function processLines(e){
+  let lines=[];
+  var txt = e.target.result;
+  alert(txt);
+}
+
+function newPage(){
+  if(confirm("Save this page?")){
+    let proj = prompt("Name of project:")
+    if(proj!="" && proj!=null){
+      alert(proj);
+    }
+  }
+  if(confirm("Are you sure you want to clear the page?")){
+    document.getElementById("tx1").value="";
+    document.getElementById("tx2").value="";
+    document.getElementById("tx3").value="";
+    let dc1 = document.querySelector("iframe").contentWindow.document;
+    dc1.open();
+    dc1.write("");
+    dc1.close();
+  }
+}
+</script>
+</head><body onload="init()">
+<div id="dv1">
+<div id="dv1a">
+<div id="tree">
+<button onclick="newPage()">New</button>
+<button onclick="load()">Load</button>
+<button onclick="save()">Save</button>
+<button onclick="run()">Run</button>
+<hr  style="border: 1px solid lightgrey;border-bottom: none;">
+<ul>
+<li>Item 1</li>
+<li><label for="ck1">Node 1</label></li><input type="checkbox" id="ck1" />
+<ul>
+<li>Item 1.1</li>
+<li>Item 1.2</li>
+<li>Item 1.3</li>
+<li>Item 1.4</li>
+</ul>
+<li>Item 3</li>
+</div> <!-- tree -->
+</div> <!-- 1a -->
+<div id="dv1b">
+<div id="tc"><span>Javascript</span><textarea id="tx1" spellcheck="false"></textarea></div>
+<div id="bc"><span>HTML</span><textarea id="tx2" spellcheck="false"></textarea></div></div><!-- 1b -->
+<div id="dv1c">
+<div id="tr"><span>CSS</span><textarea id="tx3" spellcheck="false"></textarea></div>
+<div id="br"><span>Result</span><iframe style="flex:1;border:none;border-top:1px solid lightgrey"></iframe></div></div> <!-- 1c -->
+</div> <!-- dv1 -->
+</body></html>
