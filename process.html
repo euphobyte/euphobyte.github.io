@@ -1,0 +1,86 @@
+<script>
+var txt1 = 
+`@@{page1;learn}
+@@[html]
+<h2>Hello</h2>
+<hr>
+<button onclick="test()">Test</button>
+@@[css]
+h2{
+  color: redl
+}
+@@[js]
+function test(){
+  alert("Hello!");
+}
+`;
+
+function init(){
+  let el = document.getElementById("tx1");
+  el.value = txt1;
+}
+function process(){
+  let lines = [];
+  var el1;
+  lines = txt1.split("\n");
+  for(li in lines){
+    if(lines[li].substring(0,2) == "@@"){
+      if(lines[li].substring(2,3) == "{"){
+        let el = document.getElementById("in2");
+        el.value = lines[li].slice(3).split(";")[0];
+        let el2 = document.getElementById("in1");
+        el2.value = lines[li].slice(3).split(";")[1].split("}");
+      }
+      if(lines[li].substring(2,3) == "["){
+        if(lines[li].substring(3,5)=="ht"){
+          el1 = document.getElementById("tx2"); 
+        }
+        if(lines[li].substring(3,5)=="cs"){
+          el1 = document.getElementById("tx3"); 
+        }
+        if(lines[li].substring(3,5)=="js"){
+          el1 = document.getElementById("tx4"); 
+        }
+      }
+    }else{
+      if(el1!=null)
+        el1.value = el1.value + lines[li] + "\n";  
+    }
+  }
+}
+</script>
+<style>
+#outer{
+  display: flex;
+}
+#left{
+  background-color: cyan;
+  flex: 1;
+}
+#right{
+  background-color: magenta;
+  flex: 1;
+  padding: 4px;
+}
+#tx2,#tx3, #tx4{
+  margin: 4px;
+}
+input, label, button{
+  margin: 4px;
+}
+</style>
+<body onload="init()">
+<div id="outer">
+<div id="left">
+<textarea id="tx1" cols="80" rows="25"></textarea>
+</div>
+<div id="right">
+<label>Subject</label><input id="in1" type="text"></input>
+<label>Page</label><input id="in2" type="text"></input>
+<textarea id="tx2" cols="80" rows="5"></textarea>
+<textarea id="tx3" cols="80" rows="5"></textarea>
+<textarea id="tx4" cols="80" rows="5"></textarea>
+</div>
+</div> <!-- outer -->
+<button onclick="process()">Process</button>
+</body>
