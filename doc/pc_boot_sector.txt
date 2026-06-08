@@ -25,7 +25,7 @@ start:
 print:
   lodsb
   cmp al, 0
-  je p_end
+  je  p_end
   mov ah, 0x0e
   int 0x10
   jmp print
