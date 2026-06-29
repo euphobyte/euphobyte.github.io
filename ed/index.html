@@ -1,7 +1,13 @@
 <html>
 <head>
-<title>Ed</title>
 <style>
+
+
+html {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
 #outer{
   height: 100%;
   display: flex;
@@ -20,14 +26,21 @@
   resize: none;
   border: 1px solid #eee;
   padding: 8px;
-  font: normal 12px Consolas;
+  font-family: Consolas;
+  color: #333;
 }
 </style>  
+<script>
+function init(){
+  var el = document.getElementById("txt1");
+  el.focus();
+}
+</script>
 </head>
-<body>
+<body onload="init()">
 <div id="outer">
 <div id="st"></div>
-<div id="tx"><textarea id="txt1" spellcheck="true" wrap="soft">txt1</textarea></div>
+<div id="tx"><textarea id="txt1" spellcheck="true" wrap="soft"></textarea></div>
 </div>
 </body>
 </html>
