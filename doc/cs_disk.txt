@@ -1,6 +1,6 @@
 C# Basic disk operations
 
-First block is high level read and write using StreamReader and StreamWriter.  Second block low level (byte level) reading and writing using the FileStream class.  It allows to read and write bytes an byte arrays.  Also random access to the file through the use of the Seek method. As an example 20 bytes are written to a binary file, the file pointer is moved to offset 5 in the binary file where 5 bytes 1-5 are written in the existing zero filled file.
+First block is high level read and write using StreamReader and StreamWriter.  Second block low level (byte level) reading and writing using the FileStream class.  It allows to read and write bytes and byte arrays.  Also random access to the file through the use of the Seek method. As an example 20 bytes are written to a binary file, the file pointer is moved to offset 5 in the binary file where 5 bytes 1-5 are written in the existing zero filled file.
 
 The content of file main.cs:
 
