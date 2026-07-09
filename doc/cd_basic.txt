@@ -1,8 +1,8 @@
 C# Basic data manipulation 
 
-Basic string and collection operations for C# version 5.  Which compiler comes with the built-in version of .NET in Windows 10. Though there is a lot of information and examples online available, it is hard the most effective ways to manupalte the data. The program is divided into 4 blocks
+Basic string and collection operations for C# version 5.  Which compiler comes with the built-in version of .NET in Windows 10. Though there is a lot of information and examples online available, it is hard to find the most effective ways to manipulate the data. The example program is divided into 4 blocks:
   
-- block 1 is basic string manupulation
+- block 1 is basic string manipulation
 - block 2 is List operations
 - block 3 is Dictionary operations
 - block 4 is byte and string interactions
