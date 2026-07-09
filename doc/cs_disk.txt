@@ -7,7 +7,7 @@ The content of file main.cs:
 using System;
 using System.IO;
 
-class Test{
+class MainClass{
 
   public static void Main(){
     string path1 = "test.txt";
