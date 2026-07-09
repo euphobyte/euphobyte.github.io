@@ -13,7 +13,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-public class HelloWorld{
+public class MainClass{
   public static void Main(string[] args){
     string st1 = "my/name/is/John";
     string[] ar1 = st1.Split("/");
