@@ -20,7 +20,7 @@ public class HelloWorld{
         foreach(string sub1 in ar1){
             Console.WriteLine(sub1);
         }
-        string st2 = String.Join("--", ar1 );
+        string st2 = String.Join("--", ar1);
         Console.WriteLine(st2);
         Console.WriteLine(st2.Substring(4,8));
         Console.WriteLine("{0}\r\n", st2.IndexOf("John"));
