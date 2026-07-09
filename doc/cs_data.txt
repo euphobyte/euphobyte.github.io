@@ -14,47 +14,47 @@ using System.Text;
 using System.Collections.Generic;
 
 public class HelloWorld{
-    public static void Main(string[] args){
-        string st1 = "my/name/is/John";
-        string[] ar1 = st1.Split("/");
-        foreach(string sub1 in ar1){
-            Console.WriteLine(sub1);
-        }
-        string st2 = String.Join("--", ar1);
-        Console.WriteLine(st2);
-        Console.WriteLine(st2.Substring(4,8));
-        Console.WriteLine("{0}\r\n", st2.IndexOf("John"));
-        
-        List<string> lst1 = new List<string>();
-        lst1.Add("Basic");
-        lst1.Add("C++");
-        lst1.Add("Python");
-        foreach(var el1 in lst1){
-            Console.WriteLine(el1);
-        }
-        int id1 = lst1.IndexOf("Python");
-        Console.WriteLine("Index: {0}\r\n", id1);
-        
-        Dictionary<string, string> dct1 = new Dictionary<string, string>();
-        dct1.Add("n1", "Basic");
-        dct1.Add("n2", "C++");
-        dct1.Add("n3", "Python");
-        foreach(var el2 in dct1){
-            Console.WriteLine("Key:{0} Value:{1}", el2.Key, el2.Value);
-        }
-        Console.WriteLine("Language: {0}\r\n",dct1["n2"]);
-
-        string st3 = "7";
-        Console.WriteLine("{0}", int.Parse(st3));
-        String st4 = "10";
-        int i2 = Convert.ToByte(st4, 16);
-        Console.WriteLine("{0}", i2);
-        String st5 = "a3";
-        int i3 = Convert.ToByte(st5, 16);
-        Console.WriteLine("{0}", i3);
-        byte b1 = 0b00000101 | 0x01;
-        Console.WriteLine(b1.ToString("x2"));
+  public static void Main(string[] args){
+    string st1 = "my/name/is/John";
+    string[] ar1 = st1.Split("/");
+    foreach(string sub1 in ar1){
+      Console.WriteLine(sub1);
     }
+    string st2 = String.Join("--", ar1);
+    Console.WriteLine(st2);
+    Console.WriteLine(st2.Substring(4,8));
+    Console.WriteLine("{0}\r\n", st2.IndexOf("John"));
+    
+    List<string> lst1 = new List<string>();
+    lst1.Add("Basic");
+    lst1.Add("C++");
+    lst1.Add("Python");
+    foreach(var el1 in lst1){
+        Console.WriteLine(el1);
+    }
+    int id1 = lst1.IndexOf("Python");
+    Console.WriteLine("Index: {0}\r\n", id1);
+    
+    Dictionary<string, string> dct1 = new Dictionary<string, string>();
+    dct1.Add("n1", "Basic");
+    dct1.Add("n2", "C++");
+    dct1.Add("n3", "Python");
+    foreach(var el2 in dct1){
+      Console.WriteLine("Key:{0} Value:{1}", el2.Key, el2.Value);
+    }
+    Console.WriteLine("Language: {0}\r\n",dct1["n2"]);
+
+    string st3 = "7";
+    Console.WriteLine("{0}", int.Parse(st3));
+    String st4 = "10";
+    int i2 = Convert.ToByte(st4, 16);
+    Console.WriteLine("{0}", i2);
+    String st5 = "a3";
+    int i3 = Convert.ToByte(st5, 16);
+    Console.WriteLine("{0}", i3);
+    byte b1 = 0b00000101 | 0x01;
+    Console.WriteLine(b1.ToString("x2"));
+  }
 }
 
 The output of main.cs:
