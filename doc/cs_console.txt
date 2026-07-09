@@ -11,7 +11,7 @@ Basic example of a console application:
 
 using System;
 
-static class mainclass{
+static class MainClass{
   static void Main(string[] args){
     Console.WriteLine("Hello World!");
   }
@@ -26,7 +26,7 @@ List the serial ports on this computer with their parameters:
 using System;
 using System.IO.Ports;
 
-static class mainclass{
+static class MainClass{
   static void Main(){
     Console.WriteLine("Serial ports found:");
     foreach(string port in SerialPort.GetPortNames()){
