@@ -1,0 +1,58 @@
+C# Basic disk operations
+
+First block is high level read and write using StreamReader and StreamWriter.  Second block low level (byte level) reading and writing using the FileStream class.  It allows to read and write bytes an byte arrays.  Also random access to the file through the use of the Seek method. As an example 20 bytes are written to a binary file, the file pointer is moved to offset 5 in the binary file where 5 bytes 1-5 are written in the existing zero filled file.
+
+The content of file main.cs:
+
+using System;
+using System.IO;
+
+class Test{
+
+  public static void Main(){
+    string path1 = "test.txt";
+    if (!File.Exists(path1)){
+      StreamWriter sw1 = File.CreateText(path1);
+      sw1.Write("Hello\r\n");
+      sw1.Write("World!");
+      sw1.Flush();
+      sw1.Close();
+    }
+    StreamReader sr1 = File.OpenText(path1);
+    string s = null;
+    while ((s = sr1.ReadLine()) != null)
+      Console.Write("{0} ", s);
+    sr1.Close();
+    
+    string path2 = "test.bin";
+    if(File.Exists(path2))
+      File.Delete(path2);
+
+    using (FileStream fs1 = File.OpenWrite(path2)){
+      for(int i=0; i < 20; i++)
+        fs1.WriteByte(0);
+      byte[] bt1 = {1,2,3,4,5};
+      fs1.Seek(5, SeekOrigin.Begin);
+      fs1.Write(bt1, 0, bt1.Length); 
+      fs1.Flush();
+      fs1.Close();
+    }
+
+    int len1 = (int)new FileInfo(path2).Length;
+    Console.WriteLine("\r\nLength bin file: {0}", len1);
+
+    using(FileStream fs2 = File.OpenRead(path2)){
+      byte[] bt2 = new byte[len1];
+      fs2.Read(bt2, 0, len1);
+      fs2.Close();
+      foreach(byte b1 in bt2)
+        Console.Write("{0} ", b1.ToString("X2"));
+    }
+  }
+}
+
+This is the result of executing this program:
+
+Hello World!
+Length bin file: 20
+00 00 00 00 00 01 02 03 04 05 00 00 00 00 00 00 00 00 00 00
