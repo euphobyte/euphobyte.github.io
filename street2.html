@@ -3,58 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenStreetMap Netherlands Map</title>
-    
-    <!-- 1. Include Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    
+    <title>OpenStreetMap Netherlands</title>
+    <!-- Leaflet CSS from cdnjs -->
+    <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-h9AnvUJqC919fcf5f6vB6B5m1WvOUpDcA79a32c6b160B5B16F6aB4F69B1D6F18B1f3b0e3D6D0F9A68D6A1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* 2. Set the dimensions of the map container */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-        }
-        #map {
-            width: 100%;
-            height: 100vh; /* Fills the whole screen */
-        }
+        body { margin: 0; padding: 0; }
+        #map { height: 100vh; width: 100vw; }
     </style>
 </head>
 <body>
 
-    <!-- 3. Create the map container element -->
     <div id="map"></div>
 
-    <!-- 4. Include Leaflet JavaScript -->
-    <script src="https://unpkg.com" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
+    <!-- Leaflet JavaScript from cdnjs -->
+    <script src="https://cloudflare.com" integrity="sha512-puBzdNZa5ww0V062eM6WdB6bA03J7z88L9EFA3mC5b4E6G4Z7z6Z5w8E0F16C0D58C28A6D3B16D17870E8A8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // 5. Define bounding box corners to restrict the view to the Netherlands
-        const southWest = L.latLng(50.6, 3.2);
-        const northEast = L.latLng(53.7, 7.3);
-        const nlBounds = L.latLngBounds(southWest, northEast);
+        // 1. Initialize map centered on the Netherlands [Latitude, Longitude]
+        const netherlandsCoords = [52.1326, 5.2913];
+        const zoomLevel = 8; // Fits the entire country on most screens
+        
+        const map = L.map('map').setView(netherlandsCoords, zoomLevel);
 
-        // 6. Initialize the map
-        const map = L.map('map', {
-            center: [52.1326, 5.2913], // Coordinates for the center of the Netherlands
-            zoom: 8,                    // Good starting zoom level to see the whole country
-            minZoom: 7,                 // Prevent zooming out too far from the Netherlands
-            maxZoom: 18,                // Maximum zoom depth for detail
-            maxBounds: nlBounds,        // Locks the map view to the Netherlands area
-            maxBoundsViscosity: 1.0     // Prevents the user from dragging outside the bounds
-        });
-
-        // 7. Load and display standard OpenStreetMap tile layers
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // 2. Add the OpenStreetMap tile layer
+        const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
             attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        });
+        
+        osmTiles.addTo(map);
 
-        // 8. Optional: Add a marker at a specific Dutch location (e.g., Amsterdam)
-        const marker = L.marker([52.3676, 4.9041]).addTo(map);
-        marker.bindPopup("<b>Welkom!</b><br>This is Amsterdam.").openPopup();
+        // 3. Optional: Add a marker on the capital city (Amsterdam)
+        L.marker([52.3676, 4.9041])
+            .addTo(map)
+            .bindPopup('<b>Amsterdam</b><br>Capital of the Netherlands.')
+            .openPopup();
     </script>
-
 </body>
 </html>
