@@ -80,10 +80,18 @@ div{
             alert("Your browser does not support Geolocation features.");
         }
 
-  function success(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    alert(lat + " / " + lng );
+function success(position) {
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
+  alert(lat + " / " + lng );
+}
+
+ function error(err) {
+  if (err.code === 1) {
+    alert("Please allow location access to use this feature.");
+  } else {
+    alert("Unable to retrieve your current location.");
+  }
 }
 </script>
 
