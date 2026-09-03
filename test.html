@@ -2,20 +2,40 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube Embed HTML</title>
+    <title>YouTube API - Cross Origin Safe</title>
 </head>
 <body>
 
-    <!-- Vervang VIDEO_ID met de unieke code van jouw YouTube-video -->
-    <iframe 
-        width="560" 
-        height="315" 
-        src="https://youtu.be/-gi57bu1ul0?si=FQgZzG0ONCTZyOh9" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-    </iframe >
+    <div id="player"></div>
 
+    <script>
+        // Laad de API code asynchroon
+        var tag = document.createElement('script');
+        tag.src = "https://youtube.com";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '315',
+                width: '560',
+                videoId: 'M7lc1UVf-VE',
+                playerVars: {
+                    'enablejsapi': 1,
+                    // OPLOSSING: Stuur de huidige website-origin mee naar YouTube
+                    'origin': window.location.origin, 
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log("Speler is klaar en veilig verbonden via Cross-Origin.");
+        }
+    </script>
 </body>
 </html>
