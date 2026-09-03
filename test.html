@@ -2,39 +2,47 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube API - Cross Origin Safe</title>
+    <title>YouTube Fix</title>
 </head>
 <body>
 
+    <!-- Dit element MOET exact overeenkomen met de ID in de JS code hieronder -->
     <div id="player"></div>
 
     <script>
-        // Laad de API code asynchroon
+        // 1. Forceer het laden van de YouTube API via HTTPS
         var tag = document.createElement('script');
         tag.src = "https://youtube.com";
         var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // Veilige fallback als er nog geen andere scripts op de pagina staan
+        if (firstScriptTag) {
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        } else {
+            document.head.appendChild(tag);
+        }
 
+        // 2. Deze functie wordt automatisch aangeroepen door de YouTube API
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                height: '315',
-                width: '560',
-                videoId: 'M7lc1UVf-VE',
+                height: '360',
+                width: '640',
+                videoId: 'dQw4w9WgXcQ', // Testvideo (Rick Astley). Vervang later door je eigen ID.
                 playerVars: {
-                    'enablejsapi': 1,
-                    // OPLOSSING: Stuur de huidige website-origin mee naar YouTube
-                    'origin': window.location.origin, 
-                    'playsinline': 1
+                    'autoplay': 0,
+                    'controls': 1,
+                    'origin': window.location.protocol === 'file:' ? '*' : window.location.origin
                 },
                 events: {
-                    'onReady': onPlayerReady
+                    'onReady': function(event) {
+                        console.log("De video is succesvol ingeladen!");
+                    },
+                    'onError': function(event) {
+                        console.error("YouTube Foutcode:", event.data);
+                    }
                 }
             });
-        }
-
-        function onPlayerReady(event) {
-            console.log("Speler is klaar en veilig verbonden via Cross-Origin.");
         }
     </script>
 </body>
