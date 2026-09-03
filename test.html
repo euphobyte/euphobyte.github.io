@@ -2,48 +2,31 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube Fix</title>
+    <title>YouTube Veilige Test</title>
 </head>
 <body>
 
-    <!-- Dit element MOET exact overeenkomen met de ID in de JS code hieronder -->
+    <!-- Deplek waar de video komt -->
     <div id="player"></div>
 
     <script>
-        // 1. Forceer het laden van de YouTube API via HTTPS
+        // Direct toevoegen aan de head (voorkomt fouten met insertBefore)
         var tag = document.createElement('script');
         tag.src = "https://youtube.com";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        
-        // Veilige fallback als er nog geen andere scripts op de pagina staan
-        if (firstScriptTag) {
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        } else {
-            document.head.appendChild(tag);
-        }
+        document.head.appendChild(tag);
 
-        // 2. Deze functie wordt automatisch aangeroepen door de YouTube API
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '360',
                 width: '640',
-                videoId: 'dQw4w9WgXcQ', // Testvideo (Rick Astley). Vervang later door je eigen ID.
+                videoId: 'M7lc1UVf-VE',
                 playerVars: {
-                    'autoplay': 0,
-                    'controls': 1,
-                    'origin': window.location.protocol === 'file:' ? '*' : window.location.origin
-                },
-                events: {
-                    'onReady': function(event) {
-                        console.log("De video is succesvol ingeladen!");
-                    },
-                    'onError': function(event) {
-                        console.error("YouTube Foutcode:", event.data);
-                    }
+                    'playsinline': 1
                 }
             });
         }
     </script>
+
 </body>
 </html>
