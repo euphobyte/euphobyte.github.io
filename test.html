@@ -2,31 +2,49 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube Veilige Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Zorgt voor de juiste afhandeling van beveiligingsheaders bij lokaal testen -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>YouTube Werkend Voorbeeld</title>
+    <style>
+        /* Eenvoudige styling om de video netjes te centreren op de pagina */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        iframe {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Deplek waar de video komt -->
-    <div id="player"></div>
+    <h1>Geselecteerde YouTube Video</h1>
 
-    <script>
-        // Direct toevoegen aan de head (voorkomt fouten met insertBefore)
-        var tag = document.createElement('script');
-        tag.src = "https://youtube.com";
-        document.head.appendChild(tag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '360',
-                width: '640',
-                videoId: 'M7lc1UVf-VE',
-                playerVars: {
-                    'playsinline': 1
-                }
-            });
-        }
-    </script>
+    <!-- 
+        Ingebedde video met ID: dQw4w9WgXcQ 
+        Gebruikt youtube-nocookie om browser- en adblockerblokkades lokaal te voorkomen.
+    -->
+    <iframe 
+        width="640" 
+        height="360" 
+        src="https://youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+        title="YouTube video" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+    </iframe>
 
 </body>
 </html>
