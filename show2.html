@@ -4,7 +4,7 @@
 async function show(){
   const url1 = new URL(location.search.substring(1));
   const subs = url1.pathname.split('/');
-  const fname = subs[5].substring(0, 12);
+  const fname = subs[4].substring(0, 12);
   var part1 = subs[2];
   const regexp = /^[a-z0-9]+$/i;
 
